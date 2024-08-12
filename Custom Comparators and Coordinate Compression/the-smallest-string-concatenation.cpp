@@ -1,4 +1,3 @@
-#include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,28 +7,24 @@ const long long maxN = 2e5 + 1;
 class Solution
 {
 public:
-    bool cmp(string a, string b)
-    {
-        return (a + b) < (b + a);
-    }
     void solve()
     {
         int n;
         cin >> n;
 
-        vector<string> v;
+        vector<string> s(n);
 
-        for (int i = 0; i < n; i++)
+        for (string &x : s)
         {
-            string t;
-            cin >> t;
-            v.push_back(t);
+            cin >> x;
         }
-        sort(v.begin(), v.end(), cmp);
 
-        for (int i = 0; i < n; i++)
+        sort(s.begin(), s.end(), [&s](const string &a, const string &b)
+             { return a + b < b + a; });
+
+        for (const string &x : s)
         {
-            cout << v[i];
+            cout << x;
         }
 
         return;
